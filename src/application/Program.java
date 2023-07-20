@@ -15,13 +15,12 @@ public class Program {
 		try {
 			conn = DB.getConnection();
 			st = conn.prepareStatement(
-					"UPDATE seller "
-					+ "SET BaseSalary = BaseSalary + ? "
+					"DELETE * FROM department"
 					+ "WHERE "
-					+ "(DepartmentId = ?)");
+					+ "Id = ?");
+			st.setInt(1, 3);
 					
-			st.setDouble(1, 200.0);
-			st.setInt(2, 2);
+			
 			int rowsAffected = st.executeUpdate();
 			
 			System.out.println("Done! Rows affected: "+ rowsAffected);
